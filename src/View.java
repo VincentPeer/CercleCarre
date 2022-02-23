@@ -1,5 +1,7 @@
 // importing Java AWT class
 import java.awt.*;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 public class View extends Frame {
     // initializing using constructor
@@ -16,5 +18,12 @@ public class View extends Frame {
 
         // now frame will be visible, by default it is not visible
         setVisible(true);
+
+        this.addWindowListener(new WindowAdapter(){
+            public void windowClosing(WindowEvent e) {
+                dispose();
+            }
+        });
     }
+
 }
