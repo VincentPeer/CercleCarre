@@ -1,19 +1,20 @@
 package animation;
 
 public class Direction {
-    private int x, y;
+    private double x, y;
     double radAngle;
 
-    public Direction(int x, int y) {
-        this.x = x;
-        this.y = y;
+    public Direction(double radAngle) {
+        this.radAngle = radAngle;
+        this.x = Math.cos(radAngle);
+        this.y = Math.sin(radAngle);
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 

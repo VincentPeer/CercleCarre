@@ -17,4 +17,7 @@ public class Motion {
         this.dir.setRadAngle(rad);
     }
 
+    public float getSpeed() {
+        return speed;
+    }
 }
