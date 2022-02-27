@@ -1,5 +1,3 @@
-import Shapes.Square;
-
 import javax.swing.*;
 
 public class Main {

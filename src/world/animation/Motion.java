@@ -1,4 +1,4 @@
-package animation;
+package world.animation;
 
 public class Motion {
     Direction dir;
