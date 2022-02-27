@@ -2,12 +2,14 @@ package Shapes;
 
 import animation.Direction;
 import animation.Motion;
+import java.awt.*;
 
-public class Shape {
-   float posX, posY;
+abstract public class Shape extends Component {
+   double posX, posY;
    Motion motion;
 
-   Shape (float posX, float posY) {
+
+   Shape (double posX, double posY) {
       this.posX = posX;
       this.posY = posY;
    }
@@ -20,4 +22,8 @@ public class Shape {
       posX +=  Math.cos(motion.getDir().getRad());
       posY +=  Math.sin(motion.getDir().getRad());
    }
+
+   abstract public boolean isInContact();
+
+   abstract public void draw(Graphics g);
 }
