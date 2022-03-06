@@ -1,43 +1,55 @@
 package world.Shapes.movingShapes;
 
-import world.Shapes.Shape;
-import world.animation.Direction;
 import world.animation.Motion;
+
+import javax.swing.*;
 import java.awt.*;
-import java.util.List;
 
-abstract public class MovingShape extends Shape {
-
-   private Motion motion;
+abstract public class MovingShape extends JComponent {
+   private double posX, posY;
+   private final Motion motion;
 
    public MovingShape(double posX, double posY, Motion motion) {
-      super(posX, posY);
+      this.posX = posX;
+      this.posY = posY;
       this.motion = motion;
    }
 
-   public void bounce(Direction wallDir) {
-      double newDir = 2 * Math.PI - motion.getDir().getRad() + 2 * wallDir.getRad();
+   public void bounce(Double wallAngle) {
+      double newDir = 2 * Math.PI - motion.getDir() + 2 * wallAngle;
       motion.setDir(newDir);
    }
 
-   public void move(List<Shape> shapes) {
-      Double wallDirection = isColliding(shapes);
-      if (wallDirection != null)
-         bounce(new Direction(wallDirection));
+   public void move(Graphics g) {
+      if (g != null) {
+         if (getMostLeft() <= 0 || getMostRight() >= g.getClipBounds().getWidth())
+            bounce(Math.PI / 2);
+         else if (getMostUp() <= 0 || getMostDown() >= g.getClipBounds().getHeight())
+            bounce(0.);
 
-      setPos(getPosX() + Math.cos(motion.getDir().getRad()) * motion.getSpeed(),
-             getPosY() - Math.sin(motion.getDir().getRad()) * motion.getSpeed());
+         posX += Math.cos(motion.getDir()) * motion.getSpeed();
+         posY -= Math.sin(motion.getDir()) * motion.getSpeed();
+      }else
+         System.out.println("null");
    }
 
-   abstract public Double isColliding(List<Shape> shapes);
-
-   public boolean isCollided(double posX, double posY) {
-      return false;
+   public double getPosX() {
+      return posX;
+   }
+   public double getPosY() {
+      return posY;
    }
 
-   public Double getAngle() {
-      return 0.0;
+   public void draw(Graphics g) {
+      move(g);
    }
 
-   abstract public void draw(Graphics g);
+   abstract public Double getMostLeft();
+   abstract public Double getMostRight();
+   abstract public Double getMostUp();
+   abstract public Double getMostDown();
+
+
+
+
 }

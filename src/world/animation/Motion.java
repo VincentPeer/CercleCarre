@@ -1,20 +1,20 @@
 package world.animation;
 
 public class Motion {
-    Direction dir;
+    Double radAngle;
     float speed;
 
-    public Motion(Direction dir, float speed) {
-        this.dir = dir;
+    public Motion(Double radAngle, float speed) {
+        this.radAngle = radAngle;
         this.speed = speed;
     }
 
-    public Direction getDir() {
-        return dir;
+    public Double getDir() {
+        return radAngle;
     }
 
     public void setDir(double rad) {
-        this.dir.setRadAngle(rad);
+        this.radAngle = rad;
     }
 
     public float getSpeed() {

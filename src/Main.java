@@ -1,3 +1,6 @@
+import world.Content;
+import world.View;
+
 import javax.swing.*;
 
 public class Main {
@@ -11,10 +14,8 @@ public class Main {
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
 
-        view.move();
-
-
-//        //1. Create the frame.
-//        View view = new View();
+        // nouveau contenu
+        Content c = new Content();
+        c.move(view);
     }
 }
