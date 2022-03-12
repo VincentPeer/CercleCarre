@@ -1,29 +1,38 @@
 package world;
 
+import world.Shapes.movingShapes.Circle;
 import world.Shapes.movingShapes.MovingShape;
+import world.Shapes.movingShapes.Square;
+import world.animation.Motion;
 
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 
 public class Content {
     List<MovingShape> shapes;
 
-    public Content() {
+    public Content(int width, int height, int nbObjects) {
         shapes = new LinkedList<>();
-        // Add shape todo test
-        //shapes.add(new Square(50, 200, 50, new Motion(new Direction(Math.PI / 4), 2)));
-        //shapes.add(new Circle(200, 200, 50, new Motion(new Direction(Math.PI / 3), 2)));
+
+        // Add shapes
+        Random rand = new Random();
+        for (int i = 0; i < nbObjects; ++i) {
+            int size = rand.nextInt(Math.min(width,height) / 15) + 4;
+            double posX = rand.nextInt(width - size);
+            double posY = rand.nextInt(height - size);
+            Motion motion = new Motion(rand.nextDouble() * 2 * Math.PI, rand.nextFloat());
+
+            if (rand.nextBoolean())
+                shapes.add(new Square(posX, posY , size, motion));
+            else
+                shapes.add(new Circle(posX, posY, size, motion));
+        }
     }
 
-    public void move(View view) {
-        while (true) {
-            view.repaint();
-            try {
-                Thread.sleep(5);
-            } catch (InterruptedException e) {
-                System.out.println(e.getMessage());
-            }
-        }
+
+    public List<MovingShape> getContent() {
+        return shapes;
     }
 
 

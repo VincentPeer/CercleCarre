@@ -29,9 +29,10 @@ abstract public class MovingShape extends JComponent {
 
          posX += Math.cos(motion.getDir()) * motion.getSpeed();
          posY -= Math.sin(motion.getDir()) * motion.getSpeed();
-      }else
-         System.out.println("null");
+      }
    }
+
+   public void draw(Graphics g) { move(g);}
 
    public double getPosX() {
       return posX;
@@ -40,9 +41,6 @@ abstract public class MovingShape extends JComponent {
       return posY;
    }
 
-   public void draw(Graphics g) {
-      move(g);
-   }
 
    abstract public Double getMostLeft();
    abstract public Double getMostRight();
