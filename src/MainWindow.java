@@ -5,9 +5,9 @@ public class MainWindow implements Displayer{
     private static MainWindow instance;
     private JFrame frame;
     private MainWindow() {
-        // Bouton Fermer
 
         frame = new JFrame();
+        // Bouton Fermer
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }

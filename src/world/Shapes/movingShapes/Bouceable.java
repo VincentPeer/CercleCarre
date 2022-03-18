@@ -2,10 +2,9 @@ package world.Shapes.movingShapes;
 
 import java.awt.*;
 
-public class Bouceable {
+public interface Bouceable {
     void draw();
     void move();
-    Renderable getRenderer();
     Color getColor();
     Shape getShape();
 }

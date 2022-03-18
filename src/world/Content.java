@@ -1,19 +1,21 @@
 package world;
 
+import utils.FillRenderer;
+import world.Shapes.movingShapes.Bouceable;
 import world.Shapes.movingShapes.Circle;
-import world.Shapes.movingShapes.MovingShape;
 import world.Shapes.movingShapes.Square;
 import world.animation.Motion;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
+import java.awt.*;
 
 public class Content {
-    List<MovingShape> shapes;
+    private LinkedList<Bouceable> bouncers;
 
-    public Content(int width, int height, int nbObjects) {
-        shapes = new LinkedList<>();
+    public Content(int width, int height, int nbObjects, WorldView graph) {
+        bouncers = new LinkedList<>();
 
         // Add shapes
         Random rand = new Random();
@@ -24,15 +26,15 @@ public class Content {
             Motion motion = new Motion(rand.nextDouble() * 2 * Math.PI, rand.nextFloat());
 
             if (rand.nextBoolean())
-                shapes.add(new Square(posX, posY , size, motion));
+                bouncers.add(new Square(posX, posY , size, motion, Color.BLUE, new FillRenderer(), graph));
             else
-                shapes.add(new Circle(posX, posY, size, motion));
+                bouncers.add(new Circle(posX, posY, size, motion, Color.BLUE, new FillRenderer(), graph));
         }
     }
 
 
-    public List<MovingShape> getContent() {
-        return shapes;
+    public List<Bouceable> getContent() {
+        return bouncers;
     }
 
 

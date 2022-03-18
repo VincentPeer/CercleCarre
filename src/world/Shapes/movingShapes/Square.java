@@ -1,41 +1,16 @@
 package world.Shapes.movingShapes;
+import world.WorldView;
 import world.animation.Motion;
 
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
 public class Square extends MovingShape {
-    double size;
-    public Square(double posX, double posY, int size, Motion motion) {
-        super(posX, posY, motion);
-        this.size = size;
-    }
 
-    public void draw(Graphics g) {
-        super.draw(g);
-        Graphics2D g2d = (Graphics2D) g;
-        Rectangle2D.Double rect = new Rectangle2D.Double(getPosX(), getPosY(), size, size);
-        g2d.setColor(Color.black);
-        g2d.fill(rect);
+    public Square(double posX, double posY, double size, Motion motion, Color color, utils.Renderer renderer, WorldView graph) {
+        super(posX, posY, size, motion, color, renderer, graph);
     }
-
-    @Override
-    public Double getMostRight() {
-        return getPosX() + size;
-    }
-
-    @Override
-    public Double getMostLeft() {
-        return getPosX();
-    }
-
-    @Override
-    public Double getMostUp() {
-        return getPosY();
-    }
-
-    @Override
-    public Double getMostDown() {
-        return getPosY() + size;
+    Shape makeShape(double posX, double posY, double size) {
+        return new Rectangle2D.Double(posX, posY, size, size);
     }
 }
