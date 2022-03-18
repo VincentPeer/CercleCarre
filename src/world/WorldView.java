@@ -12,11 +12,11 @@ public class WorldView extends JPanel {
         @Override
         public void run() {
             while (true) {
-//               for (Bouceable b : content.getContent()) {
-//                   b.move();
-//                   b.draw();
-//               }
-               repaint();// todo check if need
+               for (Bouceable b : content.getContent()) {
+                   b.move();
+                   b.draw();
+               }
+//               repaint();// todo check if need
                 try {
                     Thread.sleep(10);
                 } catch (InterruptedException e) {
@@ -33,11 +33,11 @@ public class WorldView extends JPanel {
         new Thread(new Time()).start();
     }
 
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        for (Bouceable s : content.getContent())
-            s.draw(); // todo plus de graphics 2d?
-    }
+//    @Override
+//    protected void paintComponent(Graphics g) {
+//        super.paintComponent(g);
+//        for (Bouceable s : content.getContent())
+//            s.draw(); // todo plus de graphics 2d?
+//    }
 
 }

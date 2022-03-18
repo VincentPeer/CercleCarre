@@ -53,7 +53,6 @@ abstract public class MovingShape implements Bouceable{
    }
 
    public void draw() {
-      move();
       renderer.display((Graphics2D) graph.getGraphics(), this);
    }
 
