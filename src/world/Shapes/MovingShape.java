@@ -52,6 +52,7 @@ abstract public class MovingShape implements Bounceable {
    public Color getColor() {
       return color;
    }
+
    public Shape getShape (){
       return shape;
    }

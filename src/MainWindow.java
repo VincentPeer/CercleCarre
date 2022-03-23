@@ -69,11 +69,11 @@ public class MainWindow implements Displayer, KeyListener {
         switch (e.getKeyChar()) {
             case 'e' : //efacer affichage
             case 'b' :
-                world.addShapes(10, 10, new OutlineRenderer());
-                break;// todo renderer singleton generer 10 cercle et carre bordure
+                world.addShapes(10, 10, new OutlineRenderer()); // todo renderer singleton generer 10 cercle et carre bordure
+                break;
             case 'f' :
-                world.addShapes(10, 10, new FillRenderer());
-                break;//10 cercle 10 carre plein
+                world.addShapes(10, 10, new FillRenderer()); //10 cercle 10 carre plein
+                break;
             case 'q' : // quiter
 
         }

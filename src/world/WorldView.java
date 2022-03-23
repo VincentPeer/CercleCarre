@@ -14,7 +14,7 @@ import java.util.Random;
 public class WorldView extends JPanel {
 
     private LinkedList<Bounceable> bouncers;
-
+    Random rand; // todo initialiser qu une fois
     class Time implements Runnable {
         @Override
         public void run() {
@@ -35,10 +35,8 @@ public class WorldView extends JPanel {
 
     public WorldView(int width, int height) {
         bouncers = new LinkedList<>();
-
-        System.out.println("Parent : " + getParent()); //todo testing
+        rand = new Random();
         setPreferredSize(new Dimension(width, height));
-//        setBackground(Color.BLUE);
         new Thread(new Time()).start();
         setVisible(true);
     }
@@ -52,8 +50,6 @@ public class WorldView extends JPanel {
     }
 
     private Bounceable randShape(char shape, Renderer renderer) {
-        Random rand = new Random(); // todo initialiser qu une fois
-
         int size = rand.nextInt(Math.min(getWidth(),getHeight()) / 15) + 4;
         double posX = (double) getWidth() / 2;
         double posY = (double) getHeight() / 2;
@@ -63,7 +59,6 @@ public class WorldView extends JPanel {
             return new Square(posX, posY , size, motion, Color.BLUE, renderer, this);
         else
             return new Circle(posX, posY, size, motion, Color.BLUE, renderer, this);
-
     }
 
 //    @Override
