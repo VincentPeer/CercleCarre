@@ -1,8 +1,8 @@
-package world.Shapes.movingShapes;
+package world.Shapes;
 
 import java.awt.*;
 
-public interface Bouceable {
+public interface Bounceable {
     void draw();
     void move();
     Color getColor();

@@ -1,18 +1,25 @@
 package world;
-import world.Shapes.movingShapes.Bouceable;
+import utils.FillRenderer;
+import utils.Renderer;
+import world.Shapes.Bounceable;
+import world.Shapes.Circle;
+import world.Shapes.Square;
+import world.animation.Motion;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.LinkedList;
+import java.util.Random;
 
 public class WorldView extends JPanel {
 
-    private final Content content;
+    private LinkedList<Bounceable> bouncers;
 
     class Time implements Runnable {
         @Override
         public void run() {
             while (true) {
-               for (Bouceable b : content.getContent()) {
+               for (Bounceable b : bouncers) {
                    b.move();
                    b.draw();
                }
@@ -26,11 +33,37 @@ public class WorldView extends JPanel {
         }
     }
 
-    public WorldView(int width, int height, int nbObjects) {
-        setVisible(true);
-        content = new Content(width, height, nbObjects, this);
+    public WorldView(int width, int height) {
+        bouncers = new LinkedList<>();
+
+        System.out.println("Parent : " + getParent()); //todo testing
         setPreferredSize(new Dimension(width, height));
+//        setBackground(Color.BLUE);
         new Thread(new Time()).start();
+        setVisible(true);
+    }
+
+    public void addShapes (int nbCercles, int nbSquares, Renderer renderer) {
+        for (int i = 0; i < nbCercles; ++i)
+            bouncers.add(randShape('c', renderer));
+
+        for (int i = 0; i < nbSquares; ++i)
+            bouncers.add(randShape('s', renderer));
+    }
+
+    private Bounceable randShape(char shape, Renderer renderer) {
+        Random rand = new Random(); // todo initialiser qu une fois
+
+        int size = rand.nextInt(Math.min(getWidth(),getHeight()) / 15) + 4;
+        double posX = (double) getWidth() / 2;
+        double posY = (double) getHeight() / 2;
+        Motion motion = new Motion(rand.nextDouble() * 2 * Math.PI, rand.nextFloat());
+
+        if (shape == 'c')
+            return new Square(posX, posY , size, motion, Color.BLUE, renderer, this);
+        else
+            return new Circle(posX, posY, size, motion, Color.BLUE, renderer, this);
+
     }
 
 //    @Override
