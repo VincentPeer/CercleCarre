@@ -6,7 +6,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 public class KeyActions implements KeyListener {
-    Bouncers bouncers;
+    private final Bouncers bouncers;
 
     /**
      * Constructor of a specific KeyListener for Bouncer class

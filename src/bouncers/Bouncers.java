@@ -16,7 +16,7 @@ public class Bouncers {
     private final LinkedList<Bounceable> bouncers;
     private Thread thread;
     private boolean run;
-    int panelWidth = 600 , panelHeight = 600;
+    private final int panelWidth = 600 , panelHeight = 600;
 
     class Ticks implements Runnable {
         /**

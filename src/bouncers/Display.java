@@ -8,7 +8,7 @@ public class Display implements Displayer {
     private static Display instance;
     private final JFrame frame;
     private Image image;
-    JPanel panel;
+    private JPanel panel;
 
     /**
      * Constructor of our Displayer. Creates a mainWindow and ads a panel to draw on it.

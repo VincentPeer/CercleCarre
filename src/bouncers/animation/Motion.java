@@ -1,8 +1,8 @@
 package bouncers.animation;
 
 public class Motion {
-    Double radAngle;
-    float speed;
+    private Double radAngle;
+    private float speed;
 
     /**
      * Constructor of the class representing a motion
