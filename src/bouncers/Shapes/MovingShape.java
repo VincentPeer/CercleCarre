@@ -13,7 +13,7 @@ abstract public class MovingShape implements Bounceable {
    private final Displayer displayer;
    private static final Random rand = new Random();
    private final Motion motion;
-   double x, y, size;
+   private double x, y, size;
 
    /**
     * Constructor to build a shape of random size, direction, speed and start position
@@ -69,6 +69,27 @@ abstract public class MovingShape implements Bounceable {
     */
    public Color getColor() {
       return color;
+   }
+
+   /**
+    * @return x position of the shape
+    */
+   public double getX() {
+      return x;
+   }
+
+   /**
+    * @return y position of the shape
+    */
+   public double getY() {
+      return y;
+   }
+
+   /**
+    * @return the size of the shape
+    */
+   public double getSize() {
+      return size;
    }
 
    /**

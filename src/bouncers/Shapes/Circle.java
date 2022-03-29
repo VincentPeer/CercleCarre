@@ -23,6 +23,6 @@ public class Circle extends MovingShape{
      * @return A Circle shaped  AWT Shape
      */
     public Shape getShape() {
-        return new RoundRectangle2D.Double(x, y, size, size, size, size);
+        return new RoundRectangle2D.Double(getX(), getY(), getSize(), getSize(), getSize(), getSize());
     }
 }

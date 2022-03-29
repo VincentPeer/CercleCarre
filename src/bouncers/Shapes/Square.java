@@ -23,7 +23,7 @@ public class Square extends MovingShape {
      * @return A square shaped  AWT Shape
      */
     public Shape getShape() {
-        return new Rectangle2D.Double(x, y, size, size);
+        return new Rectangle2D.Double(getX(), getY(), getSize(), getSize());
     }
 
 }
