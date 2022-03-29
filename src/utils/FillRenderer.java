@@ -1,7 +1,7 @@
 package utils;
 
-import world.Shapes.Bounceable;
-import world.Shapes.Circle;
+import bouncers.Shapes.Bounceable;
+import bouncers.Shapes.Circle;
 
 import java.awt.*;
 
@@ -9,12 +9,7 @@ public class FillRenderer implements Renderer {
     @Override
     public void display(Graphics2D g, Bounceable b) {
         if (g != null) {
-            Color color;
-            if (b instanceof Circle)
-                color = Color.BLUE;
-            else
-                color = Color.ORANGE;
-            g.setColor(color);
+            g.setColor(b.getColor());
             g.fill(b.getShape());
         }
     }

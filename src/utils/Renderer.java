@@ -1,6 +1,6 @@
 package utils;
 
-import world.Shapes.Bounceable;
+import bouncers.Shapes.Bounceable;
 
 import java.awt.*;
 

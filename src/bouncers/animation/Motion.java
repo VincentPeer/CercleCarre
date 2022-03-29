@@ -1,4 +1,4 @@
-package world.animation;
+package bouncers.animation;
 
 public class Motion {
     Double radAngle;

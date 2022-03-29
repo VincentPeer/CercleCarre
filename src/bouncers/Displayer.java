@@ -1,3 +1,5 @@
+package bouncers;
+
 import java.awt.*;
 
 public interface Displayer {
