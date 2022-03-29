@@ -10,6 +10,9 @@ public class Display implements Displayer {
     private Image image;
     JPanel panel;
 
+    /**
+     * Constructor of our Displayer. Creates a mainWindow and ads a panel to draw on it.
+     */
     private Display() {
         frame = new JFrame();
         // Close button
@@ -29,6 +32,12 @@ public class Display implements Displayer {
         frame.setVisible(true);
     }
 
+    /**
+     * Access to the single instance of this class. If no instance exists, one is created
+     * @param width width of the drawing panel
+     * @param height height of the drawing panel
+     * @return singleton instance of the class
+     */
     public static Display getInstance(int width, int height) {
         if (instance == null)
             instance = new Display();
@@ -37,30 +46,52 @@ public class Display implements Displayer {
         return instance;
     }
 
+    /**
+     * Ads a KeyListener to the main Frame
+     * @param listener the listener to add
+     */
     public void addKeyListener(KeyListener listener) {
         frame.addKeyListener(listener);
     }
 
+    /**
+     * @return width of the drawing panel
+     */
     @Override
     public int getWidth() {
         return panel.getWidth();
     }
 
+    /**
+     * @return height of the drawing panel
+     */
     @Override
     public int getHeight() {
         return panel.getHeight();
     }
 
+    /**
+     * Creates a graphics context for drawing to an off-screen image.
+     * This method can only be called for off-screen images.
+     * @return A graphics context to draw to the off-screen image.
+     */
     @Override
     public Graphics2D getGraphics() {
         return (Graphics2D) image.getGraphics();
     }
 
+    /**
+     * Updates the graphics of our frame, using
+     */
     @Override
     public void repaint() {
         frame.repaint();
     }
 
+    /**
+     * Sets window title
+     * @param title title of the window
+     */
     @Override
     public void setTitle(String title) {
         frame.setTitle(title);

@@ -19,6 +19,10 @@ public class Bouncers {
     int panelWidth = 600 , panelHeight = 600;
 
     class Ticks implements Runnable {
+        /**
+         * run method of Runnable thread witch updates the position of the shapes and redraws the graphics.
+         * Each loop represents one tick
+         */
         @Override
         public void run() {
             while (run) {
@@ -30,16 +34,20 @@ public class Bouncers {
                         b.draw();
                     }
                     sem.release();
+                    // Repaint main displayer and children
                     displayer.repaint();
                     Thread.sleep(5);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-
             }
         }
     }
 
+    /**
+     * Constructor of Bouncer the class, initialise all components, creates a Displayer and
+     * ads the KeyListener to the main window.
+     */
     public Bouncers() {
         // semaphore to block simultaneous access to bouncers
         sem = new Semaphore(1);
@@ -50,19 +58,28 @@ public class Bouncers {
         displayer.addKeyListener(new KeyActions(this));
     }
 
+    // Our main methode, stars a new bouncer class and runs it
     public static void main(String ... args) {
         new Bouncers().run();
     }
 
+    /**
+     * Starts a Runnable thread representing ticks
+     */
     public void run () {
         run = true;
         thread = new Thread(new Ticks());
         thread.start();
     }
 
+    /**
+     * Stops the thread and closes the application
+     */
     public void quit() {
+        // Stopping the thread's loop
         run = false;
         try {
+            // Waiting for the thread to finish
             thread.join();
             System.exit(0);
         } catch (InterruptedException e) {
@@ -70,9 +87,16 @@ public class Bouncers {
         }
     }
 
+    /**
+     * Adds shapes to be drawn
+     * @param nbShapes number of square and circles to be drawn
+     * @param cColor circle color
+     * @param sColor square color
+     * @param renderer renderer to be used to draw the shapes
+     */
     public void addShapes (int nbShapes, Color cColor, Color sColor, Renderer renderer) {
         try {
-            // Thread safe access to bouncers
+            // For thread safe access to bouncers
             sem.acquire();
             for (int i = 0; i < nbShapes; ++i) {
                 bouncers.add(new Circle(cColor, renderer, displayer));
@@ -84,7 +108,10 @@ public class Bouncers {
         }
     }
 
-    public void removeShapes() {
+    /**
+     * Removes all the shapes in our list.
+     */
+    public void clearShapes() {
         bouncers.clear();
     }
 }
