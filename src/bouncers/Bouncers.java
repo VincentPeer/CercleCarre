@@ -11,7 +11,7 @@ import java.util.concurrent.Semaphore;
 
 public class Bouncers {
 
-    private final Semaphore sem;
+    private Semaphore sem;
     private final Display displayer;
     private final LinkedList<Bounceable> bouncers;
     private Thread thread;
