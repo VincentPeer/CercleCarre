@@ -6,6 +6,10 @@ import utils.Renderer;
 import java.awt.*;
 import java.awt.geom.Rectangle2D;
 
+/**
+ * Create a square
+ * @authors De Bleser, Peer
+ */
 public class Square extends MovingShape {
 
     /**

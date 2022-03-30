@@ -5,6 +5,10 @@ import bouncers.Shapes.Circle;
 
 import java.awt.*;
 
+/**
+ * Makes fill shapes
+ * @authors De Bleser, Peer
+ */
 public class FillRenderer implements Renderer {
 
     /**

@@ -7,6 +7,10 @@ import utils.Renderer;
 import java.awt.*;
 import java.util.Random;
 
+/**
+ * Bases rules to make a new piece, pieces classes will extend this abstract class.
+ * @authors De Bleser, Peer
+ */
 abstract public class MovingShape implements Bounceable {
    private final Color color;
    private final Renderer renderer;

@@ -4,6 +4,10 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.KeyListener;
 
+/**
+ *
+ * @authors De Bleser, Peer
+ */
 public class Display implements Displayer {
     private static Display instance;
     private final JFrame frame;

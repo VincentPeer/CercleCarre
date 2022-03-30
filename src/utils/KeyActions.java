@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
+/**
+ * Take key event press by the user
+ * @authors De Bleser, Peer
+ */
 public class KeyActions implements KeyListener {
     private final Bouncers bouncers;
 

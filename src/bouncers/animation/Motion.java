@@ -1,5 +1,9 @@
 package bouncers.animation;
 
+/**
+ * Manage the motion for a piece
+ * @authors De Bleser, Peer
+ */
 public class Motion {
     private Double radAngle;
     private float speed;

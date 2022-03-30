@@ -5,6 +5,10 @@ import bouncers.Shapes.Circle;
 
 import java.awt.*;
 
+/**
+ * Makes shapes with outine border colored but empty body
+ * @authors De Bleser, Peer
+ */
 public class OutlineRenderer implements Renderer {
 
     /**

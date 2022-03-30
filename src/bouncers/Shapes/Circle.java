@@ -7,6 +7,10 @@ import utils.Renderer;
 import java.awt.*;
 import java.awt.geom.RoundRectangle2D;
 
+/**
+ * Create a circle
+ * @authors De Bleser, Peer
+ */
 public class Circle extends MovingShape{
 
     /**
